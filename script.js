@@ -66,7 +66,7 @@ let add = () => {
   }
   questions.push(newQuestion);
   answers.push(newAnswer);
-  alert(`Successfully added question: "${newQuestion}".\n Successfully added answer :"${newAnswer}.`);
+  //alert(`Successfully added question: "${newQuestion}".\n Successfully added answer : "${newAnswer}.`);
 };
 
 let currentQuestion;
