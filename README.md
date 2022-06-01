@@ -41,6 +41,13 @@ The function will default to `copy` if the answer is invalid.
 - Figure out why simulating button click doesnt work.
 - Figure out why input is need for text input.
 - Figure out why setAttribute is needed instead of `value = string`.
+- Allow automatic answer + question adding on the view correct answer.
+- Maybe go overboard and auto answer + question for everything(add as you play the game).
+- Macros for upgrades and powerups.
+- Upgrade alert
+- Outnumbered macro
+- Cash concealer bypass.
+- Replace buttons with keybinds.
 - Plus more.
 
 Will I do any of these? No.
