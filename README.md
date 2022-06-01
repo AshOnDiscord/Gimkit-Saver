@@ -38,6 +38,9 @@ The function will default to `copy` if the answer is invalid.
 - Input answers and questions(mainly for Gimkit collab).
 - Better code.
 - A toggle to disable and enable the script (technically only the UI).
+- Figure out why simulating button click doesnt work.
+- Figure out why input is need for text input.
+- Figure out why setAttribute is needed instead of `value = string`.
 - Plus more.
 
 Will I do any of these? No.
