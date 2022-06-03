@@ -1,8 +1,8 @@
 // Initialize Variables
 let currentQuestion;
 let currentAnswer;
-let questions = [""];
-let answers = [""];
+let questions = [];
+let answers = [];
 let question;
 let choice1;
 let choice2;
@@ -10,20 +10,7 @@ let choice3;
 let choice4;
 let inputBox;
 let filter = (element) => element == question.innerText;
-
-// Add custom css file so I don't need to use inline css
-let scriptCSS = document.createElement("link");
-scriptCSS.setAttribute("rel", "stylesheet");
-scriptCSS.setAttribute(
-  "href",
-  "https://raw.githubusercontent.com/joshuac/gimkit/master/gimkit.css"
-);
-
-let ui = document.createElement("div");
-document.body.appendChild(ui);
-ui.classList.add("text-slate-100");
-ui.innerHTML =
-  '<div class="bg-slate-800 p-3 z-[1000] rounded-md m-4 absolute top-0 left-0 shadow-md shadow-slate-900/50"><h1 class="font-semibold text-xl mb-2">Gimkit Utility</h1><div class="grid grid-cols-2 gap-2"><button class="scriptBtn">Add</button><button class="scriptBtn">Get</button><div class="flex flex-col col-span-2 mt-2"><button id="listOfAnswersToggle" class="flex justify-between px-2 py-1 bg-slate-700/50 m-0 rounded-t-md items-center"><h1>Show List</h1><span id="upArrow" class="hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/></svg></span><span id="downArrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span></button><div class="bg-slate-700 rounded-b-md border-t-[1px] py-1" id="listOfAnswers"><ul class="list-disc list-inside ml-2 border-slate-100"><li>Question</li><li>Answer</li></ul></div></div></div></div><button class="z-[1000] p-1 absolute right-0 bottom-0 bg-slate-800 m-4 rounded-md flex justify-center items-center shadow-md shadow-slate-900/25">Hide</button>';
+let total = "";
 
 let update = () => {
   currentQuestion = document.querySelector(".sc-bjPkoM.FAjCU span") || "error";
@@ -50,6 +37,13 @@ let update = () => {
   answers.push(currentAnswer.innerText);
   currentQuestion.style.background = "transparent";
   currentAnswer.style.background = "transparent";
+
+  total = "";
+  for (let i = 0; i < questions.length; i++) {
+    total += `<li>${answers[i]}</li><li><span class='text-xs'>${questions[i]}<span></li>`;
+  }
+
+  document.querySelector("#listOfAnswers>ul").innerHTML = total;
 };
 
 let get = () => {
@@ -125,3 +119,34 @@ let textBoxGet = (inputBox) => {
   }
   inputBox.value = answers[answerIndex];
 };
+
+// UI
+
+// Add custom css file so I don't need to use inline css
+let scriptCSS = document.createElement("link");
+scriptCSS.setAttribute("rel", "stylesheet");
+scriptCSS.setAttribute(
+  "href",
+  "https://cdn.jsdelivr.net/gh/AshOnDiscord/Gimkit-Saver@latest/output.css"
+);
+document.head.appendChild(scriptCSS);
+
+let ui = document.createElement("div");
+document.body.appendChild(ui);
+ui.classList.add("text-slate-100");
+ui.innerHTML =
+  '<div class="text-slate-100 bg-slate-800 p-3 z-[1000] rounded-md m-4 absolute top-0 left-0 shadow-md shadow-slate-900/50"><h1 class="font-semibold text-xl mb-2 text-slate-100">Gimkit Utility</h1><div class="grid grid-cols-2 gap-2"><button class="scriptBtn" id="addBTN">Add</button><button class="scriptBtn" id="getBTN">Get</button><div class="flex flex-col col-span-2 mt-2"><button id="listOfAnswersToggle" class="flex justify-between px-2 py-1 bg-slate-700/50 m-0 rounded-t-md items-center"><h1 class="text-slate-100">Show List</h1><span id="upArrow" class="hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/></svg></span><span id="downArrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg></span></button><div class="bg-slate-700 rounded-b-md border-t-[1px] py-1" id="listOfAnswers"><ul class="list-disc list-inside ml-2 border-slate-100"><li>Question</li><li>Answer</li></ul></div></div></div></div><button class="text-slate-100 z-[1000] p-1 absolute right-0 bottom-0 bg-slate-800 m-4 rounded-md flex justify-center items-center shadow-md shadow-slate-900/25">Hide</button>';
+
+let toggleList = () => {
+  document.querySelector("#listOfAnswers").classList.toggle("hidden");
+  document.querySelector("#listOfAnswersToggle").classList.toggle("rounded-md");
+  document.querySelector("#upArrow").classList.toggle("hidden");
+  document.querySelector("#downArrow").classList.toggle("hidden");
+};
+
+document
+  .querySelector("#listOfAnswersToggle")
+  .addEventListener("click", toggleList);
+
+document.querySelector("#addBTN").addEventListener("click", update);
+document.querySelector("#getBTN").addEventListener("click", get);

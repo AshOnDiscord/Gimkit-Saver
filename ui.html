@@ -11,18 +11,20 @@
     <div class="text-slate-100">
       <!-- Actual Ui -->
       <div
-        class="bg-slate-800 p-3 z-[1000] rounded-md m-4 absolute top-0 left-0 shadow-md shadow-slate-900/50"
+        class="text-slate-100 bg-slate-800 p-3 z-[1000] rounded-md m-4 absolute top-0 left-0 shadow-md shadow-slate-900/50"
       >
-        <h1 class="font-semibold text-xl mb-2">Gimkit Utility</h1>
+        <h1 class="font-semibold text-xl mb-2 text-slate-100">
+          Gimkit Utility
+        </h1>
         <div class="grid grid-cols-2 gap-2">
-          <button class="scriptBtn">Add</button>
-          <button class="scriptBtn">Get</button>
+          <button class="scriptBtn" id="addBTN">Add</button>
+          <button class="scriptBtn" id="getBTN">Get</button>
           <div class="flex flex-col col-span-2 mt-2">
             <button
               id="listOfAnswersToggle"
               class="flex justify-between px-2 py-1 bg-slate-700/50 m-0 rounded-t-md items-center"
             >
-              <h1>Show List</h1>
+              <h1 class="text-slate-100">Show List</h1>
               <span id="upArrow" class="hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +69,7 @@
         </div>
       </div>
       <button
-        class="z-[1000] p-1 absolute right-0 bottom-0 bg-slate-800 m-4 rounded-md flex justify-center items-center shadow-md shadow-slate-900/25"
+        class="text-slate-100 z-[1000] p-1 absolute right-0 bottom-0 bg-slate-800 m-4 rounded-md flex justify-center items-center shadow-md shadow-slate-900/25"
       >
         Hide
       </button>
