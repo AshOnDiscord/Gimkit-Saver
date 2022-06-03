@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .scriptBtn {
+    @apply border px-2 py-1 rounded-md hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200 active:border-slate-200;
+  }
+}
